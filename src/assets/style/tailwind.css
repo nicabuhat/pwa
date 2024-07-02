@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+    h1 {
+        font-family: "Baloo Bhaijaan 2", sans-serif;
+        font-optical-sizing: auto;
+        font-weight:600;
+        font-style: normal;
+    }
+
+}

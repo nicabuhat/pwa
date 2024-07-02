@@ -1,26 +1,41 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="wrapper">
+    <ul>
+      <li v-for="product in data || []" :key="product.id">
+        <ProductPage :id="product.id" :product="product" />
+      </li>
+    </ul>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { ref, onMounted } from 'vue';
+import ProductPage from './components/pages/ProductPage.vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+const data = ref(null);
+const loading = ref(true);
+const error = ref(null);
+
+const loadData = async () => {
+  try {
+    const response = await fetch('/data.json');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    data.value = await response.json();
+  } catch (e) {
+    error.value = e;
+  } finally {
+    loading.value = false;
   }
-}
+};
+
+onMounted(loadData);
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.wrapper {
+  max-width: 2100px;
+  margin: 0 auto;
 }
 </style>
