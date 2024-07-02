@@ -1,0 +1,11 @@
+{
+    "products": {
+        "id": 1,
+        "name": "Poppy's Kitchen",
+        "description": "Healthy dog treats, artisan baked and handmade",
+        "price": 45,
+        "flavor": "chicken liver chunks in gravy",
+        "color": "#BC6928",
+        "image": "/images/products/product_01.png"
+    }
+}
